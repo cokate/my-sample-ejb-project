@@ -4,8 +4,10 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.ejb.DependsOn;
 import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
+import javax.ejb.Startup;
 
 /**
  * This class implements the first singleton session bean of this example
@@ -13,6 +15,8 @@ import javax.ejb.Singleton;
  */
 @Singleton
 @LocalBean
+@Startup
+@DependsOn("SingletonSessionBeanB")
 public class SingletonSessionBeanA {
 	/* Constant(s): */
 	private final static String BEAN_NAME = "SingletonSessionBeanA";
