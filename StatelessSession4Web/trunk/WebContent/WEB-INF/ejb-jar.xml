@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar version="3.1" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd">
+	<enterprise-beans>
+		<!-- Minimal configuration to define a stateless session bean with a no-interface 
+			view using only the deployment descriptor and no annotations. -->
+		<session>
+			<ejb-name>StatefulSession1Bean</ejb-name>
+			<!-- Indicates the session bean has a no-interface view. Equivalent to 
+				the @LocalBean annotation. -->
+			<local-bean />
+			<!-- Specify the session bean implementation class. -->
+			<ejb-class>com.ivan.scbcd6.StatelessSession4Bean</ejb-class>
+			<!-- Specifies that the session bean is stateless. Equivalent to the @Stateless 
+				annotation. -->
+			<session-type>Stateless</session-type>
+		</session>
+	</enterprise-beans>
+</ejb-jar>
