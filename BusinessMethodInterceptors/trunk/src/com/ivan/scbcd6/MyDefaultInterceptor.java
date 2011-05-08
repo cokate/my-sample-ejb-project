@@ -1,5 +1,6 @@
 package com.ivan.scbcd6;
 
+import javax.annotation.PostConstruct;
 import javax.interceptor.InvocationContext;
 
 public class MyDefaultInterceptor {
@@ -8,4 +9,15 @@ public class MyDefaultInterceptor {
 				+ "." + inInvocationContext.getMethod().getName());
 		return inInvocationContext.proceed();
 	}
+
+	@PostConstruct
+	public void postConstruct(InvocationContext inInvocationContext) throws Exception {
+		System.out.println(" MyDefaultInterceptor.postConstruct");
+		/*
+		 * Important! Must call proceed, in order for the other interceptor
+		 * methods in the interceptor chain to become invoked.
+		 */
+		inInvocationContext.proceed();
+	}
+
 }
