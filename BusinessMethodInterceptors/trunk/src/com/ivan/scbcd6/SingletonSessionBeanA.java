@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.LocalBean;
+import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.interceptor.Interceptors;
 
@@ -15,6 +16,11 @@ public class SingletonSessionBeanA {
 	private final static String BEAN_NAME = "SingletonSessionBeanA";
 	/* Instance variable(s): */
 	private String mStoredMessage = "[no message set]";
+
+	@Schedule(second = "*/5", minute = "*", hour = "*")
+	public void doPeriodic() {
+		System.out.println("*** Do periodic: " + (new Date()));
+	}
 
 	@PostConstruct
 	public void intialize() {
@@ -28,8 +34,7 @@ public class SingletonSessionBeanA {
 
 	public String retrieveMessage() {
 		Date theCurrentTime = new Date();
-		return "Message from " + BEAN_NAME + " - " + mStoredMessage + " "
-				+ theCurrentTime;
+		return "Message from " + BEAN_NAME + " - " + mStoredMessage + " " + theCurrentTime;
 	}
 
 	public void storeMessage(final String inStoredMessage) {
